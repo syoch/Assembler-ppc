@@ -1,0 +1,35 @@
+TARGET=asm
+
+PREFIX := build/
+
+OBJDIR := $(PREFIX)obj
+DEPDIR := $(PREFIX)dep
+SRCDIR := src
+
+INCLUDE := -I include
+
+
+## Arguments
+CXXDEP   ?= -MMD -MP -MF $(@:$(SRCDIR)/%.cpp=$(DEPDIR)/%.d)
+LDFLAGS  ?=
+CXXFLAGS ?= -c -Wall -Wextra -std=gnu++11 $(INCLUDE) $(CXXDEP)
+
+SRCS := $(wildcard $(SRCDIR)/*.cpp)
+
+### Targets
+.PHONY: all clean
+
+all: $(TARGET)
+clean:
+	$(RM) $(DEPDIR)/* $(OBJDIR)/* $(TARGET)
+
+$(TARGET): $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+	@echo "link    [$@]"
+	@$(CXX) -o $@ $(LDFLAGS) $(OBJS)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	@echo "compile [$*]"
+	@$(CXX) -o $@ $(CXXFLAGS) $(SRCDIR)/$*.cpp
+
+# Source Dependencies
+-include $(SRCS:$(SRCDIR)/%.cpp=$(DEPDIR)/%.d)
