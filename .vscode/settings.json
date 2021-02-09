@@ -1,0 +1,11 @@
+{
+    "saveAndRun": {
+        "commands": [
+            {
+                "cmd": "python3 autotool/auto/autoc.py make -f Makefile",
+                "isAsync": true,
+                "silent": true
+            }
+        ]
+    },
+}
