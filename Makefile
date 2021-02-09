@@ -25,7 +25,6 @@ clean:
 	$(RM) $(DEPDIR)/* $(OBJDIR)/* $(TARGET)
 
 test: $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
-	# required arguments are 'ARGS' 'TEST'
 	@$(CXX) -o $(TSTDIR)/$(TEST) $(LDFLAGS) $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o) test/$(TEST).cpp
 	@echo "run test[$@]"
 	@$(TSTDIR)/$(TEST) $(ARGS)
