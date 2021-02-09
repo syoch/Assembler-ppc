@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/syoch/projects/assembler-ppc
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -77,6 +66,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named AssemblerPPC
+# Target rules for targets named ppcasm
 
 # Build rule for target.
-AssemblerPPC: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 AssemblerPPC
-.PHONY : AssemblerPPC
+ppcasm: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ppcasm
+.PHONY : ppcasm
 
 # fast build rule for target.
-AssemblerPPC/fast:
-	$(MAKE) -f CMakeFiles/AssemblerPPC.dir/build.make CMakeFiles/AssemblerPPC.dir/build
-.PHONY : AssemblerPPC/fast
+ppcasm/fast:
+	$(MAKE) -f CMakeFiles/ppcasm.dir/build.make CMakeFiles/ppcasm.dir/build
+.PHONY : ppcasm/fast
 
 src/asm.o: src/asm.cpp.o
 
@@ -129,7 +129,7 @@ src/asm.o: src/asm.cpp.o
 
 # target to build an object file
 src/asm.cpp.o:
-	$(MAKE) -f CMakeFiles/AssemblerPPC.dir/build.make CMakeFiles/AssemblerPPC.dir/src/asm.cpp.o
+	$(MAKE) -f CMakeFiles/ppcasm.dir/build.make CMakeFiles/ppcasm.dir/src/asm.cpp.o
 .PHONY : src/asm.cpp.o
 
 src/asm.i: src/asm.cpp.i
@@ -138,7 +138,7 @@ src/asm.i: src/asm.cpp.i
 
 # target to preprocess a source file
 src/asm.cpp.i:
-	$(MAKE) -f CMakeFiles/AssemblerPPC.dir/build.make CMakeFiles/AssemblerPPC.dir/src/asm.cpp.i
+	$(MAKE) -f CMakeFiles/ppcasm.dir/build.make CMakeFiles/ppcasm.dir/src/asm.cpp.i
 .PHONY : src/asm.cpp.i
 
 src/asm.s: src/asm.cpp.s
@@ -147,7 +147,7 @@ src/asm.s: src/asm.cpp.s
 
 # target to generate assembly for a file
 src/asm.cpp.s:
-	$(MAKE) -f CMakeFiles/AssemblerPPC.dir/build.make CMakeFiles/AssemblerPPC.dir/src/asm.cpp.s
+	$(MAKE) -f CMakeFiles/ppcasm.dir/build.make CMakeFiles/ppcasm.dir/src/asm.cpp.s
 .PHONY : src/asm.cpp.s
 
 # Help Target
@@ -156,9 +156,9 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... AssemblerPPC"
+	@echo "... edit_cache"
+	@echo "... ppcasm"
 	@echo "... src/asm.o"
 	@echo "... src/asm.i"
 	@echo "... src/asm.s"
