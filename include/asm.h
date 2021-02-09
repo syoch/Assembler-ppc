@@ -6,7 +6,7 @@
 
 namespace Assembler
 {
-    using byte=uint8_t;
+    using Inst=uint32_t;
 } // namespace Assembler
 
 
