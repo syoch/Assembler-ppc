@@ -4,6 +4,7 @@ PREFIX := build/
 
 OBJDIR := $(PREFIX)obj
 DEPDIR := $(PREFIX)dep
+TSTDIR := $(PREFIX)test
 SRCDIR := src
 
 INCLUDE := -I include
