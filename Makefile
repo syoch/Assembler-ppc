@@ -17,11 +17,13 @@ CXXFLAGS ?= -c -Wall -Wextra -std=gnu++11 $(INCLUDE) $(CXXDEP)
 SRCS := $(wildcard $(SRCDIR)/*.cpp)
 
 ### Targets
-.PHONY: all clean
+.PHONY: all clean test
 
 all: $(TARGET)
 clean:
 	$(RM) $(DEPDIR)/* $(OBJDIR)/* $(TARGET)
+test: $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
+	# required arguments are 'ARGS' 'TEST'
 
 $(TARGET): $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 	@echo "link    [$@]"
