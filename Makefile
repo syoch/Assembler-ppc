@@ -25,7 +25,7 @@ clean:
 
 $(TARGET): $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 	@echo "link    [$@]"
-	@$(CXX) -o $@ $(LDFLAGS) $(OBJS)
+	@$(CXX) -o $@ $(LDFLAGS) $(SRCS:$(SRCDIR)/%.cpp=$(OBJDIR)/%.o)
 
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp
 	@echo "compile [$*]"
