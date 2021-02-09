@@ -6,6 +6,7 @@
 
 namespace Assembler
 {
+    using byte=uint8_t;
 } // namespace Assembler
 
 
