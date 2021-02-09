@@ -9,6 +9,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 include_directories("include")
 
-add_executable(AssemblerPPC
+add_library(ppcasm STATIC
     src/asm.cpp
 )
