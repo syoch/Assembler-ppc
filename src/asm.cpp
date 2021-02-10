@@ -34,4 +34,6 @@ std::vector<Assembler::Inst> Assembler::PPC(std::wstring source)
             ++iter;
         }
     }
+
+    uint32_t ip=0; // Instruction pointer.
 }
