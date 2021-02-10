@@ -62,3 +62,6 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
     }
     return mCode;
 }
+Inst Assembler::li(std::wstring code){
+    std::wcout<<code<<std::endl;
+}
