@@ -2,7 +2,7 @@
     "saveAndRun": {
         "commands": [
             {
-                "cmd": "python3 autotool/auto/autoc.py \"make -f Makefile; make -f test/Makefile; test/Test\"",
+                "cmd": "python3 autotool/auto/autoc.py \"cmake --build . ; cmake --build test; test/Test\"",
                 "isAsync": true,
                 "silent": true
             }
