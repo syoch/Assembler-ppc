@@ -4,10 +4,10 @@
 
 #include <string>
 
-namespace Assembler
+class Assembler
 {
     using Inst=uint32_t;
-} // namespace Assembler
+}; // class Assembler
 
 
 #endif
