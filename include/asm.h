@@ -7,9 +7,8 @@
 
 class Assembler
 {
-    using Inst=uint32_t;
+    using Inst = uint32_t;
     std::vector<Inst> PPC(std::wstring source);
 }; // class Assembler
-
 
 #endif
