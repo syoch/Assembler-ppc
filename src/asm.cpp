@@ -25,7 +25,8 @@ void split_args(std::wstring source, std::vector<std::wstring> &dest)
         {
             dest.emplace_back(buffer);
             buffer.clear();
-        }else if (ch == ' ')
+        }
+        else if (ch == ' ')
         {
         }
         else
@@ -53,35 +54,44 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         }
     }
 
-    uint32_t ip=0; // Instruction pointer.
-    
+    uint32_t ip = 0; // Instruction pointer.
+
     // get all label (& remove)
     std::vector<Inst> mCode;
-    for (auto iter = lines.begin(); iter != lines.end();){
-        const auto line=*iter;
-        if(line[line.length()-1]==':'){
-            labels[line.substr(0,line.length()-1)]=ip;
-            iter=lines.erase(iter);
-        }else{
-            ip+=4;
+    for (auto iter = lines.begin(); iter != lines.end();)
+    {
+        const auto line = *iter;
+        if (line[line.length() - 1] == ':')
+        {
+            labels[line.substr(0, line.length() - 1)] = ip;
+            iter = lines.erase(iter);
+        }
+        else
+        {
+            ip += 4;
             ++iter;
         }
     }
-    ip=0;
+    ip = 0;
 
-    for(auto line: lines){
-        std::wstring mnemonic = line.substr(0,line.find(L' '));
-        std::wstring _arguments = line.substr(line.find(' ')+1);
+    for (auto line : lines)
+    {
+        std::wstring mnemonic = line.substr(0, line.find(L' '));
+        std::wstring _arguments = line.substr(line.find(' ') + 1);
         std::vector<std::wstring> arguments;
-        split_args(_arguments,arguments);
-        if(mnemonic==L"li"){
+        split_args(_arguments, arguments);
+        if (mnemonic == L"li")
+        {
             li(line);
-        }else{
-            std::wcout<<"Not Defined:"<<mnemonic<<std::endl;
+        }
+        else
+        {
+            std::wcout << "Not Defined:" << mnemonic << std::endl;
         }
     }
     return mCode;
 }
-Inst Assembler::li(std::wstring code){
-    std::wcout<<code<<std::endl;
+Inst Assembler::li(std::wstring code)
+{
+    std::wcout << code << std::endl;
 }
