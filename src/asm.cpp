@@ -34,6 +34,10 @@ void split_args(std::wstring source, std::vector<std::wstring> &dest)
             buffer += ch;
         }
     }
+    if (!buffer.empty())
+    {
+        dest.emplace_back(buffer);
+    }
 }
 #include <iostream>
 std::vector<Inst> Assembler::PPC(std::wstring source)
