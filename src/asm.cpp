@@ -37,13 +37,16 @@ std::vector<Assembler::Inst> Assembler::PPC(std::wstring source)
 
     uint32_t ip=0; // Instruction pointer.
     
-    // get all label
+    // get all label (& remove)
     std::vector<Inst> mCode;
-    for(auto line: lines){
+    for (auto iter = lines.begin(); iter != lines.end();){
+        const auto line=*iter;
         if(line[line.length()-1]==':'){
             labels[line.substr(0,line.length()-1)]=ip;
+            iter=lines.erase(iter);
         }else{
             ip+=4;
+            ++iter;
         }
     }
     ip=0;
