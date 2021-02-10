@@ -43,7 +43,7 @@ std::vector<Assembler::Inst> Assembler::PPC(std::wstring source)
         if(line[line.length()-1]==':'){
             labels[line.substr(0,line.length()-1)]=ip;
         }else{
-            ip+=1;
+            ip+=4;
         }
     }
     ip=0;
