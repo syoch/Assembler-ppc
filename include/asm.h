@@ -3,6 +3,7 @@
 #define ASSMEMBLER_H
 
 #include <string>
+#include <vector>
 
 class Assembler
 {
