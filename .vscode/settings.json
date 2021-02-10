@@ -2,7 +2,7 @@
     "saveAndRun": {
         "commands": [
             {
-                "cmd": "python3 autotool/auto/autoc.py \"make -f Makefile;make test/Makefile; test/Test\"",
+                "cmd": "python3 autotool/auto/autoc.py \"make -f Makefile; make -f test/Makefile; test/Test\"",
                 "isAsync": true,
                 "silent": true
             }
@@ -14,7 +14,6 @@
         "**/.hg": true,
         "**/CVS": true,
         "**/.DS_Store": true,
-
         "build/": true,
         "autotool/": true,
         ".gitignore": true,
