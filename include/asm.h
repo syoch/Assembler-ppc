@@ -6,9 +6,10 @@
 #include <vector>
 #include <map>
 
+using Inst = uint32_t;
+
 class Assembler
 {
-    using Inst = uint32_t;
 
 public:
     std::vector<Inst> PPC(std::wstring source);
