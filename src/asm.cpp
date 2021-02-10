@@ -82,7 +82,7 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         split_args(_arguments, arguments);
         if (mnemonic == L"li")
         {
-            li(line);
+            li(arguments);
         }
         else
         {
@@ -91,7 +91,6 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
     }
     return mCode;
 }
-Inst Assembler::li(std::wstring code)
+Inst Assembler::li(std::vector<std::wstring> code)
 {
-    std::wcout << code << std::endl;
 }

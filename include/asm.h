@@ -15,7 +15,8 @@ public:
     std::vector<Inst> PPC(std::wstring source);
     uint32_t getAddr(std::wstring label);
 
-    Inst li(std::wstring code);
+    Inst li(std::vector<std::wstring> code);
+
 private:
     std::map<std::wstring, uint32_t> labels;
 }; // class Assembler
