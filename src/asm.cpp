@@ -19,4 +19,6 @@ void split_lines(std::wstring source, std::vector<std::wstring> &dest)
 
 std::vector<Assembler::Inst> Assembler::PPC(std::wstring source)
 {
+    std::vector<std::wstring> lines;
+    split_lines(source, lines);
 }
