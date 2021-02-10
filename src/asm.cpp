@@ -53,6 +53,7 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
 
     for(auto line: lines){
         std::wstring mnemonic = line.substr(0,line.find(L' '));
+        std::wstring arguments = line.substr(line.find(' ')+1);
         if(mnemonic==L"li"){
             li(line);
         }else{
