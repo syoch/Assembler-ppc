@@ -16,6 +16,24 @@ void split_lines(std::wstring source, std::vector<std::wstring> &dest)
         }
     }
 }
+void split_args(std::wstring source, std::vector<std::wstring> &dest)
+{
+    std::wstring buffer;
+    for (auto ch : source)
+    {
+        if (ch == ',')
+        {
+            dest.emplace_back(buffer);
+            buffer.clear();
+        }else if (ch == ' ')
+        {
+        }
+        else
+        {
+            buffer += ch;
+        }
+    }
+}
 #include <iostream>
 std::vector<Inst> Assembler::PPC(std::wstring source)
 {
@@ -55,6 +73,7 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         std::wstring mnemonic = line.substr(0,line.find(L' '));
         std::wstring _arguments = line.substr(line.find(' ')+1);
         std::vector<std::wstring> arguments;
+        split_args(_arguments,arguments);
         if(mnemonic==L"li"){
             li(line);
         }else{
