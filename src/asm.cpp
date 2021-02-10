@@ -53,6 +53,11 @@ std::vector<Assembler::Inst> Assembler::PPC(std::wstring source)
 
     for(auto line: lines){
         std::wstring mnemonic = line.substr(0,line.find(L' '));
+        if(mnemonic==L"li"){
+            std::wcout<<"li"<<std::endl;
+        }else{
+            std::wcout<<"Not Defined:"<<mnemonic<<std::endl;
+        }
     }
     return mCode;
 }
