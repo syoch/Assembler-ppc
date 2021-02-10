@@ -16,7 +16,7 @@ void split_lines(std::wstring source, std::vector<std::wstring> &dest)
         }
     }
 }
-
+#include <iostream>
 std::vector<Assembler::Inst> Assembler::PPC(std::wstring source)
 {
     std::vector<std::wstring> lines;
@@ -36,4 +36,17 @@ std::vector<Assembler::Inst> Assembler::PPC(std::wstring source)
     }
 
     uint32_t ip=0; // Instruction pointer.
+    
+    // get all label
+    std::vector<Inst> mCode;
+    for(auto line: lines){
+        if(line[line.length()-1]==':'){
+            labels[line.substr(0,line.length()-1)]=ip;
+        }else{
+            ip+=1;
+        }
+    }
+    ip=0;
+    
+    return mCode;
 }
