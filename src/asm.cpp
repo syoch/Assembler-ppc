@@ -21,4 +21,17 @@ std::vector<Assembler::Inst> Assembler::PPC(std::wstring source)
 {
     std::vector<std::wstring> lines;
     split_lines(source, lines);
+
+    // remove comments
+    for (auto iter = lines.begin(); iter != lines.end();)
+    {
+        if ((*iter)[0] == '#')
+        {
+            iter = lines.erase(iter);
+        }
+        else
+        {
+            ++iter;
+        }
+    }
 }
