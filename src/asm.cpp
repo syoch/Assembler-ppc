@@ -50,6 +50,9 @@ std::vector<Assembler::Inst> Assembler::PPC(std::wstring source)
         }
     }
     ip=0;
-    
+
+    for(auto line: lines){
+        std::wstring mnemonic = line.substr(0,line.find(L' '));
+    }
     return mCode;
 }
