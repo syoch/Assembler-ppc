@@ -149,4 +149,11 @@ Inst Assembler::stw(std::vector<std::wstring> args)
 }
 Inst Assembler::lwz(std::vector<std::wstring> args)
 {
+    auto regno = util::_toInt(args[0].substr(1));
+    uint16_t imm = util::_toInt(args[1].substr(0, args[1].find(L'(')));
+    auto srcRegno = util::_toInt(args[1].substr(args[1].find(L'(') + 2, args[1].find(L')') - args[1].find(L'(') - 2));
+    return 32 << (16 + 5 + 5) |
+           regno << (16 + 5) |
+           srcRegno << (16) |
+           imm;
 }
