@@ -133,7 +133,9 @@ Inst Assembler::stwu(std::vector<std::wstring> args)
 }
 Inst Assembler::mflr(std::vector<std::wstring> args)
 {
-    return 0;
+    auto regno = util::_toInt(args[0].substr(1));
+    return 0x7c0802a6 |
+           regno << 21;
 }
 Inst Assembler::stw(std::vector<std::wstring> args)
 {
