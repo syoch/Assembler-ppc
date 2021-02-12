@@ -109,6 +109,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << add(arguments) << std::endl;
         }
+        else if (mnemonic == L"lis")
+        {
+            std::wcout << lis(arguments) << std::endl;
+        }
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
@@ -169,4 +173,7 @@ Inst Assembler::add(std::vector<std::wstring> args)
 }
 Inst Assembler::lis(std::vector<std::wstring> args)
 {
+    auto D = util::_toInt(args[0].substr(1));
+    auto SIMM = util::_toInt(args[1]);
+    return 15 << (26) | D << (21) | SIMM;
 }
