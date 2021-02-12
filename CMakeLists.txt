@@ -8,7 +8,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 
 include_directories("include")
+include_directories("libs/strutil")
 
 add_library(ppcasm STATIC
     src/asm.cpp
+    libs/strutil/strutil.cpp
 )
