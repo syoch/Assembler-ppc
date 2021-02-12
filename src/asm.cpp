@@ -87,7 +87,7 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         split_args(_arguments, arguments);
         if (mnemonic == L"li")
         {
-            li(arguments);
+            std::wcout << std::hex << li(arguments) << std::endl;
         }
         else
         {
@@ -98,4 +98,9 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
 }
 Inst Assembler::li(std::vector<std::wstring> args)
 {
+    auto regno = util::_toInt(args[0].substr(1));
+    auto value = util::_toInt(args[1]);
+    return 14 << (16 + 5 + 5) |
+           regno << (16 + 5) |
+           value;
 }
