@@ -104,9 +104,6 @@ Inst Assembler::li(std::vector<std::wstring> args)
            regno << (16 + 5) |
            value;
 }
-Inst Assembler::li(std::vector<std::wstring> args)
-{
-}
 Inst Assembler::stwu(std::vector<std::wstring> args)
 {
 }
