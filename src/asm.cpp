@@ -167,3 +167,6 @@ Inst Assembler::add(std::vector<std::wstring> args)
     auto B = util::_toInt(args[2].substr(1));
     return 31 << (26) | D << (21) | A << (16) | B << (11) | 0x214;
 }
+Inst Assembler::lis(std::vector<std::wstring> args)
+{
+}
