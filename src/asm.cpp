@@ -104,3 +104,18 @@ Inst Assembler::li(std::vector<std::wstring> args)
            regno << (16 + 5) |
            value;
 }
+Inst Assembler::li(std::vector<std::wstring> args)
+{
+}
+Inst Assembler::stwu(std::vector<std::wstring> args)
+{
+}
+Inst Assembler::mflr(std::vector<std::wstring> args)
+{
+}
+Inst Assembler::stw(std::vector<std::wstring> args)
+{
+}
+Inst Assembler::lwz(std::vector<std::wstring> args)
+{
+}

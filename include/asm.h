@@ -16,6 +16,10 @@ public:
     uint32_t getAddr(std::wstring label);
 
     Inst li(std::vector<std::wstring> args);
+    Inst stwu(std::vector<std::wstring> args);
+    Inst mflr(std::vector<std::wstring> args);
+    Inst stw(std::vector<std::wstring> args);
+    Inst lwz(std::vector<std::wstring> args);
 
 private:
     std::map<std::wstring, uint32_t> labels;
