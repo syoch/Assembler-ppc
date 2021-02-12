@@ -1,4 +1,5 @@
 #include <asm.h>
+#include <strutil.h>
 
 void split_lines(std::wstring source, std::vector<std::wstring> &dest)
 {
