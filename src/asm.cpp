@@ -91,11 +91,11 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         }
         else if (mnemonic == L"stwu")
         {
-            std::wcout << line << std::endl;
             std::wcout << stwu(arguments) << std::endl;
         }
         else if (mnemonic == L"mflr")
         {
+            std::wcout << line << std::endl;
             std::wcout << mflr(arguments) << std::endl;
         }
         else if (mnemonic == L"stw")
@@ -133,6 +133,7 @@ Inst Assembler::stwu(std::vector<std::wstring> args)
 }
 Inst Assembler::mflr(std::vector<std::wstring> args)
 {
+    return 0;
 }
 Inst Assembler::stw(std::vector<std::wstring> args)
 {
