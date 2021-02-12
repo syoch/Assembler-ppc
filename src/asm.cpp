@@ -78,7 +78,7 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         }
     }
     ip = 0;
-
+    std::wcout << std::hex;
     for (auto line : lines)
     {
         std::wstring mnemonic = line.substr(0, line.find(L' '));
@@ -87,7 +87,7 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         split_args(_arguments, arguments);
         if (mnemonic == L"li")
         {
-            std::wcout << std::hex << li(arguments) << std::endl;
+            std::wcout << li(arguments) << std::endl;
         }
         else
         {
