@@ -95,7 +95,6 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         }
         else if (mnemonic == L"mflr")
         {
-            std::wcout << line << std::endl;
             std::wcout << mflr(arguments) << std::endl;
         }
         else if (mnemonic == L"stw")
