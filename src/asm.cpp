@@ -106,6 +106,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << lwz(arguments) << std::endl;
         }
+        else if (mnemonic == L"add")
+        {
+            std::wcout << add(arguments) << std::endl;
+        }
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
