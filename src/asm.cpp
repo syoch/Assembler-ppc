@@ -89,6 +89,23 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << li(arguments) << std::endl;
         }
+        else if (mnemonic == L"stwu")
+        {
+            std::wcout << line << std::endl;
+            std::wcout << stwu(arguments) << std::endl;
+        }
+        else if (mnemonic == L"mflr")
+        {
+            std::wcout << mflr(arguments) << std::endl;
+        }
+        else if (mnemonic == L"stw")
+        {
+            std::wcout << stw(arguments) << std::endl;
+        }
+        else if (mnemonic == L"lwz")
+        {
+            std::wcout << lwz(arguments) << std::endl;
+        }
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
@@ -106,6 +123,13 @@ Inst Assembler::li(std::vector<std::wstring> args)
 }
 Inst Assembler::stwu(std::vector<std::wstring> args)
 {
+    auto regno = util::_toInt(args[0].substr(1));
+    uint16_t imm = util::_toInt(args[1].substr(0, args[1].find(L'(')));
+    auto srcRegno = util::_toInt(args[1].substr(args[1].find(L'(') + 2, args[1].find(L')') - args[1].find(L'(') - 2));
+    return 37 << (16 + 5 + 5) |
+           regno << (16 + 5) |
+           srcRegno << (16) |
+           imm;
 }
 Inst Assembler::mflr(std::vector<std::wstring> args)
 {
