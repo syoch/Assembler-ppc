@@ -157,3 +157,6 @@ Inst Assembler::lwz(std::vector<std::wstring> args)
            srcRegno << (16) |
            imm;
 }
+Inst Assembler::add(std::vector<std::wstring> args)
+{
+}

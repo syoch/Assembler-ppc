@@ -20,6 +20,7 @@ public:
     Inst mflr(std::vector<std::wstring> args);
     Inst stw(std::vector<std::wstring> args);
     Inst lwz(std::vector<std::wstring> args);
+    Inst add(std::vector<std::wstring> args);
 
 private:
     std::map<std::wstring, uint32_t> labels;
