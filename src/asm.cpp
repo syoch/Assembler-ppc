@@ -117,6 +117,11 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << ori(arguments) << std::endl;
         }
+        else if (mnemonic == L"mullw")
+        {
+            std::wcout << mullw(arguments) << std::endl;
+        }
+
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
@@ -187,4 +192,11 @@ Inst Assembler::ori(std::vector<std::wstring> args)
     auto S = util::_toInt(args[1].substr(1));
     auto UIMM = util::_toInt(args[2]);
     return 24 << (26) | S << (21) | A << (16) | UIMM;
+}
+Inst Assembler::mullw(std::vector<std::wstring> args)
+{
+    auto D = util::_toInt(args[0].substr(1));
+    auto A = util::_toInt(args[1].substr(1));
+    auto B = util::_toInt(args[2].substr(1));
+    return 31 << (26) | D << (21) | A << (16) | B << (11) | 0x1d6;
 }
