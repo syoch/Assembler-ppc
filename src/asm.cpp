@@ -177,3 +177,10 @@ Inst Assembler::lis(std::vector<std::wstring> args)
     auto SIMM = util::_toInt(args[1]);
     return 15 << (26) | D << (21) | SIMM;
 }
+Inst Assembler::ori(std::vector<std::wstring> args)
+{
+    auto A = util::_toInt(args[0].substr(1));
+    auto S = util::_toInt(args[1].substr(1));
+    auto UIMM = util::_toInt(args[2]);
+    return 24 << (26) | S << (21) | A << (16) | UIMM;
+}
