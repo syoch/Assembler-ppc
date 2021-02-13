@@ -26,6 +26,7 @@ public:
     Inst mullw(std::vector<std::wstring> args);
     Inst divw(std::vector<std::wstring> args);
     Inst cmplwi(std::vector<std::wstring> args);
+    Inst cmplw(std::vector<std::wstring> args);
 
 private:
     std::map<std::wstring, uint32_t> labels;
