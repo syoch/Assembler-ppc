@@ -114,9 +114,5 @@ int main(int argc, char const *argv[])
     {
         std::wcout << inst << " ";
     }
-    std::wcout << "\n";
-    std::wcout << "\n\n"
-               << assembler.li(std::vector<std::wstring>({L"r3", L"3"})) << std::endl;
-    ;
     return 0;
 }
