@@ -125,7 +125,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << divw(arguments) << std::endl;
         }
-
+        else if (mnemonic == L"cmplwi")
+        {
+            std::wcout << cmplwi(arguments) << std::endl;
+        }
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
@@ -210,4 +213,16 @@ Inst Assembler::divw(std::vector<std::wstring> args)
     auto A = util::_toInt(args[1].substr(1));
     auto B = util::_toInt(args[2].substr(1));
     return 31 << (26) | D << (21) | A << (16) | B << (11) | 0x3d6;
+}
+Inst Assembler::cmplwi(std::vector<std::wstring> args)
+{
+    int i = 0;
+    int D = 0, A = 0, B = 0;
+    if (args.size() == 3)
+    {
+        D = util::_toInt(args[i++].substr(2)); // cr<n>
+    }
+    A = util::_toInt(args[i++].substr(1));
+    B = util::_toInt(args[i++].substr(1));
+    return 31 << (26) | D << (23) | A << (16) | B << (11) | 0x40;
 }
