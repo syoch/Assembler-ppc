@@ -153,6 +153,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << mtlr(arguments) << std::endl;
         }
+        else if (mnemonic == L"blr")
+        {
+            std::wcout << blr(arguments) << std::endl;
+        }
 
         else
         {
@@ -292,4 +296,8 @@ Inst Assembler::mtlr(std::vector<std::wstring> args)
     auto regno = util::_toInt(args[0].substr(1));
     return 0x7c0803a6 |
            regno << 21;
+}
+Inst Assembler::blr(std::vector<std::wstring> args)
+{
+    return 0x4e800020;
 }
