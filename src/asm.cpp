@@ -137,6 +137,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << beq(arguments) << std::endl;
         }
+        else if (mnemonic == L"b")
+        {
+            std::wcout << b(arguments) << std::endl;
+        }
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
@@ -254,4 +258,8 @@ Inst Assembler::cmplw(std::vector<std::wstring> args)
 Inst Assembler::beq(std::vector<std::wstring> args)
 {
     return 0x41820000 | (uint16_t)(labels[args[0]] - ip);
+}
+Inst Assembler::b(std::vector<std::wstring> args)
+{
+    return 0xf8000000 | (uint16_t)labels[args[0]];
 }

@@ -28,6 +28,7 @@ public:
     Inst cmplwi(std::vector<std::wstring> args);
     Inst cmplw(std::vector<std::wstring> args);
     Inst beq(std::vector<std::wstring> args);
+    Inst b(std::vector<std::wstring> args);
 
 private:
     std::map<std::wstring, uint32_t> labels;
