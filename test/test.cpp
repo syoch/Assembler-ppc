@@ -110,10 +110,13 @@ int main(int argc, char const *argv[])
             "mtlr r0\n"
             "addi r1, r1, 32\n"
             "blr\n"));
+    bool flag = false;
     std::wcout << std::hex;
     for (auto inst : mCode)
     {
-        std::wcout << inst << " ";
+        std::wcout << inst;
+        std::wcout << (flag ? '\n' : ' ');
+        flag ^= 1;
     }
     return 0;
 }
