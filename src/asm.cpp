@@ -249,5 +249,5 @@ Inst Assembler::cmplw(std::vector<std::wstring> args)
 }
 Inst Assembler::beq(std::vector<std::wstring> args)
 {
-    return 0x41820000 | labels[args[0]] /*-ip*/;
+    return 0x41820000 | (labels[args[0]] - ip);
 }
