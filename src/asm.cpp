@@ -141,6 +141,11 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << b(arguments) << std::endl;
         }
+        else if (mnemonic == L"addi")
+        {
+            std::wcout << addi(arguments) << std::endl;
+        }
+
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
@@ -262,4 +267,11 @@ Inst Assembler::beq(std::vector<std::wstring> args)
 Inst Assembler::b(std::vector<std::wstring> args)
 {
     return 0xf8000000 | (uint16_t)labels[args[0]];
+}
+Inst Assembler::addi(std::vector<std::wstring> args)
+{
+    auto D = util::_toInt(args[0].substr(1));
+    auto A = util::_toInt(args[1].substr(1));
+    auto SIMM = util::_toInt(args[2]);
+    return 14 << (26) | D << (21) | A << (16) | SIMM;
 }
