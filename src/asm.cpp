@@ -145,6 +145,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << addi(arguments) << std::endl;
         }
+        else if (mnemonic == L"blt")
+        {
+            std::wcout << blt(arguments) << std::endl;
+        }
 
         else
         {
@@ -274,4 +278,8 @@ Inst Assembler::addi(std::vector<std::wstring> args)
     auto A = util::_toInt(args[1].substr(1));
     auto SIMM = util::_toInt(args[2]);
     return 14 << (26) | D << (21) | A << (16) | SIMM;
+}
+Inst Assembler::blt(std::vector<std::wstring> args)
+{
+    return 0x41800000 | (uint16_t)(labels[args[0]] - ip);
 }
