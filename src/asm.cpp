@@ -217,12 +217,14 @@ Inst Assembler::divw(std::vector<std::wstring> args)
 Inst Assembler::cmplwi(std::vector<std::wstring> args)
 {
     int i = 0;
-    int D = 0, A = 0, B = 0;
+    int D = 0, A = 0;
+    uint16_t UIMM;
     if (args.size() == 3)
     {
         D = util::_toInt(args[i++].substr(2)); // cr<n>
     }
     A = util::_toInt(args[i++].substr(1));
-    B = util::_toInt(args[i++].substr(1));
-    return 31 << (26) | D << (23) | A << (16) | B << (11) | 0x40;
+    UIMM = util::_toInt(args[i++]);
+
+    return 10 << (26) | D << (23) | A << (16) | UIMM;
 }
