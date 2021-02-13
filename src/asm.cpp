@@ -137,6 +137,7 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
         }
+        ip += 4;
     }
     return mCode;
 }
