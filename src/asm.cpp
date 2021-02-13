@@ -121,6 +121,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << mullw(arguments) << std::endl;
         }
+        else if (mnemonic == L"divw")
+        {
+            std::wcout << divw(arguments) << std::endl;
+        }
 
         else
         {
@@ -199,4 +203,11 @@ Inst Assembler::mullw(std::vector<std::wstring> args)
     auto A = util::_toInt(args[1].substr(1));
     auto B = util::_toInt(args[2].substr(1));
     return 31 << (26) | D << (21) | A << (16) | B << (11) | 0x1d6;
+}
+Inst Assembler::divw(std::vector<std::wstring> args)
+{
+    auto D = util::_toInt(args[0].substr(1));
+    auto A = util::_toInt(args[1].substr(1));
+    auto B = util::_toInt(args[2].substr(1));
+    return 31 << (26) | D << (21) | A << (16) | B << (11) | 0x3d6;
 }
