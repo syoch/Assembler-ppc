@@ -113,6 +113,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             std::wcout << lis(arguments) << std::endl;
         }
+        else if (mnemonic == L"ori")
+        {
+            std::wcout << ori(arguments) << std::endl;
+        }
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
