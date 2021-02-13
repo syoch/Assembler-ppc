@@ -78,7 +78,6 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         }
     }
     ip = 0;
-    std::wcout << std::hex;
     for (auto line : lines)
     {
         std::wstring mnemonic = line.substr(0, line.find(L' '));
@@ -87,75 +86,75 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         split_args(_arguments, arguments);
         if (mnemonic == L"li")
         {
-            std::wcout << li(arguments) << std::endl;
+            mCode.emplace_back(li(arguments));
         }
         else if (mnemonic == L"stwu")
         {
-            std::wcout << stwu(arguments) << std::endl;
+            mCode.emplace_back(stwu(arguments));
         }
         else if (mnemonic == L"mflr")
         {
-            std::wcout << mflr(arguments) << std::endl;
+            mCode.emplace_back(mflr(arguments));
         }
         else if (mnemonic == L"stw")
         {
-            std::wcout << stw(arguments) << std::endl;
+            mCode.emplace_back(stw(arguments));
         }
         else if (mnemonic == L"lwz")
         {
-            std::wcout << lwz(arguments) << std::endl;
+            mCode.emplace_back(lwz(arguments));
         }
         else if (mnemonic == L"add")
         {
-            std::wcout << add(arguments) << std::endl;
+            mCode.emplace_back(add(arguments));
         }
         else if (mnemonic == L"lis")
         {
-            std::wcout << lis(arguments) << std::endl;
+            mCode.emplace_back(lis(arguments));
         }
         else if (mnemonic == L"ori")
         {
-            std::wcout << ori(arguments) << std::endl;
+            mCode.emplace_back(ori(arguments));
         }
         else if (mnemonic == L"mullw")
         {
-            std::wcout << mullw(arguments) << std::endl;
+            mCode.emplace_back(mullw(arguments));
         }
         else if (mnemonic == L"divw")
         {
-            std::wcout << divw(arguments) << std::endl;
+            mCode.emplace_back(divw(arguments));
         }
         else if (mnemonic == L"cmplwi")
         {
-            std::wcout << cmplwi(arguments) << std::endl;
+            mCode.emplace_back(cmplwi(arguments));
         }
         else if (mnemonic == L"cmplw")
         {
-            std::wcout << cmplw(arguments) << std::endl;
+            mCode.emplace_back(cmplw(arguments));
         }
         else if (mnemonic == L"beq")
         {
-            std::wcout << beq(arguments) << std::endl;
+            mCode.emplace_back(beq(arguments));
         }
         else if (mnemonic == L"b")
         {
-            std::wcout << b(arguments) << std::endl;
+            mCode.emplace_back(b(arguments));
         }
         else if (mnemonic == L"addi")
         {
-            std::wcout << addi(arguments) << std::endl;
+            mCode.emplace_back(addi(arguments));
         }
         else if (mnemonic == L"blt")
         {
-            std::wcout << blt(arguments) << std::endl;
+            mCode.emplace_back(blt(arguments));
         }
         else if (mnemonic == L"mtlr")
         {
-            std::wcout << mtlr(arguments) << std::endl;
+            mCode.emplace_back(mtlr(arguments));
         }
         else if (mnemonic == L"blr")
         {
-            std::wcout << blr(arguments) << std::endl;
+            mCode.emplace_back(blr(arguments));
         }
 
         else
