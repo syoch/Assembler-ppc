@@ -31,6 +31,7 @@ public:
 
 private:
     std::map<std::wstring, uint32_t> labels;
+    uint32_t ip;
 }; // class Assembler
 
 #endif

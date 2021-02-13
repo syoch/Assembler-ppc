@@ -59,7 +59,7 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         }
     }
 
-    uint32_t ip = 0; // Instruction pointer.
+    ip = 0;
 
     // get all label (& remove)
     std::vector<Inst> mCode;
