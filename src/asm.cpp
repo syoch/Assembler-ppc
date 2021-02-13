@@ -246,3 +246,7 @@ Inst Assembler::cmplw(std::vector<std::wstring> args)
 
     return 10 << (26) | D << (23) | A << (16) | UIMM;
 }
+Inst Assembler::beq(std::vector<std::wstring> args)
+{
+    return 0x41820000 | labels[args[0]] /*-ip*/;
+}
