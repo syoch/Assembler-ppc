@@ -269,7 +269,6 @@ Inst Assembler::cmplw(std::vector<std::wstring> args)
     B = util::_toInt(args[i++].substr(1));
 
     auto code = 31 << (26) | D << (23) | A << (16) | B << (11) | 0x40;
-    std::wcout << D << " " << A << " " << code << std::endl;
     return code;
 }
 Inst Assembler::beq(std::vector<std::wstring> args)
