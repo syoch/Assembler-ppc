@@ -277,7 +277,7 @@ Inst Assembler::beq(std::vector<std::wstring> args)
 }
 Inst Assembler::b(std::vector<std::wstring> args)
 {
-    return 0xf8000000 | (uint16_t)labels[args[0]];
+    return 0x48000000 | (uint16_t)labels[args[0]];
 }
 Inst Assembler::addi(std::vector<std::wstring> args)
 {
