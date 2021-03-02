@@ -173,6 +173,21 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             mCode.emplace_back(Or(arguments));
         }
+        else if (mnemonic == L".word")
+        {
+            auto tmp = *(iter + 1);
+            std::wstring nextMnemonic = tmp.substr(0, tmp.find(L' '));
+            if (nextMnemonic != L".word")
+            {
+                std::wcout << "Error: .word count is not a multiple of 2" << std::endl;
+                std::exit(-1);
+            }
+            iter++;
+
+            uint16_t high = util::_toInt(line.substr(line.find(' ') + 1));
+            uint16_t low = util::_toInt(tmp.substr(tmp.find(' ') + 1));
+            mCode.emplace_back(high << 16 | low);
+        }
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
