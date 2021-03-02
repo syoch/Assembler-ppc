@@ -78,8 +78,9 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         }
     }
     ip = 0;
-    for (auto line : lines)
+    for (auto iter = lines.begin(); iter != lines.end(); ++iter)
     {
+        auto line = *iter;
         std::wstring mnemonic = line.substr(0, line.find(L' '));
         std::wstring _arguments = line.substr(line.find(' ') + 1);
         std::vector<std::wstring> arguments;
