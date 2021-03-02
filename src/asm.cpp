@@ -327,13 +327,16 @@ Inst Assembler::bctrl(std::vector<std::wstring> args)
 }
 Inst Assembler::mr(std::vector<std::wstring> args)
 {
-    args.emplace_back(args[1]);
-    return Or(args);
+    std::vector<std::wstring> orArgs;
+    orArgs.emplace_back(args[0]);
+    orArgs.emplace_back(args[1]);
+    orArgs.emplace_back(args[1]);
+    return Or(orArgs);
 }
 Inst Assembler::Or(std::vector<std::wstring> args)
 {
-    auto S = util::_toInt(args[0].substr(1));
-    auto A = util::_toInt(args[1].substr(1));
+    auto A = util::_toInt(args[0].substr(1));
+    auto S = util::_toInt(args[1].substr(1));
     auto B = util::_toInt(args[2].substr(1));
     return 0x7c000378 | S << 21 | A << 16 | B << 11;
 }
