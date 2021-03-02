@@ -188,6 +188,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
             uint16_t low = util::_toInt(tmp.substr(tmp.find(' ') + 1));
             mCode.emplace_back(high << 16 | low);
         }
+        else if (mnemonic == L"bl")
+        {
+            mCode.emplace_back(bl(arguments));
+        }
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
@@ -355,4 +359,8 @@ Inst Assembler::Or(std::vector<std::wstring> args)
     auto S = util::_toInt(args[1].substr(1));
     auto B = util::_toInt(args[2].substr(1));
     return 0x7c000378 | S << 21 | A << 16 | B << 11;
+}
+Inst Assembler::bl(std::vector<std::wstring> args)
+{
+    return 0x48000001 | (uint16_t)(labels[args[0]] - ip);
 }

@@ -37,6 +37,7 @@ public:
     Inst bctrl(std::vector<std::wstring> args);
     Inst mr(std::vector<std::wstring> args);
     Inst Or(std::vector<std::wstring> args);
+    Inst bl(std::vector<std::wstring> args);
 
 private:
     std::map<std::wstring, uint32_t> labels;
