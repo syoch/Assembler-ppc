@@ -1,6 +1,5 @@
 #include <asm.h>
 #include <strutil.h>
-#include <sstream>
 
 void split_lines(std::wstring source, std::vector<std::wstring> &dest)
 {
@@ -79,9 +78,8 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         }
     }
     ip = 0;
-    for (auto iter = lines.begin(); iter != lines.end(); ++iter)
+    for (auto line : lines)
     {
-        auto line = *iter;
         std::wstring mnemonic = line.substr(0, line.find(L' '));
         std::wstring _arguments = line.substr(line.find(' ') + 1);
         std::vector<std::wstring> arguments;
@@ -158,24 +156,21 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             mCode.emplace_back(blr(arguments));
         }
-        else if (mnemonic == L"bl")
+        else if (mnemonic == L"mtctr")
         {
-            mCode.emplace_back(bl(arguments));
+            mCode.emplace_back(mtctr(arguments));
         }
-        else if (mnemonic == L".word")
+        else if (mnemonic == L"bctrl")
         {
-            auto tmp = *(iter + 1);
-            std::wstring nextMnemonic = tmp.substr(0, tmp.find(L' '));
-            if (nextMnemonic != L".word")
-            {
-                std::wcout << "Error: .word count is not a multiple of 2" << std::endl;
-                std::exit(-1);
-            }
-            iter++;
-
-            uint16_t high = util::_toInt(line.substr(line.find(' ') + 1));
-            uint16_t low = util::_toInt(tmp.substr(tmp.find(' ') + 1));
-            mCode.emplace_back(high << 16 | low);
+            mCode.emplace_back(bctrl(arguments));
+        }
+        else if (mnemonic == L"mr")
+        {
+            mCode.emplace_back(mr(arguments));
+        }
+        else if (mnemonic == L"or")
+        {
+            mCode.emplace_back(Or(arguments));
         }
         else
         {
@@ -316,11 +311,29 @@ Inst Assembler::mtlr(std::vector<std::wstring> args)
     return 0x7c0803a6 |
            regno << 21;
 }
+Inst Assembler::mtctr(std::vector<std::wstring> args)
+{
+    auto regno = util::_toInt(args[0].substr(1));
+    return 0x7c0903a6 |
+           regno << 21;
+}
 Inst Assembler::blr(std::vector<std::wstring> args)
 {
     return 0x4e800020;
 }
-Inst Assembler::bl(std::vector<std::wstring> args)
+Inst Assembler::bctrl(std::vector<std::wstring> args)
 {
-    return 0x48000001 | (uint16_t)(labels[args[0]] - ip);
+    return 0x4e800421;
+}
+Inst Assembler::mr(std::vector<std::wstring> args)
+{
+    args.emplace_back(args[1]);
+    return Or(args);
+}
+Inst Assembler::Or(std::vector<std::wstring> args)
+{
+    auto S = util::_toInt(args[0].substr(1));
+    auto A = util::_toInt(args[1].substr(1));
+    auto B = util::_toInt(args[2].substr(1));
+    return 0x7c000378 | S << 21 | A << 16 | B << 11;
 }

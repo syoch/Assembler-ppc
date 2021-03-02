@@ -33,7 +33,10 @@ public:
     Inst blt(std::vector<std::wstring> args);
     Inst mtlr(std::vector<std::wstring> args);
     Inst blr(std::vector<std::wstring> args);
-    Inst bl(std::vector<std::wstring> args);
+    Inst mtctr(std::vector<std::wstring> args);
+    Inst bctrl(std::vector<std::wstring> args);
+    Inst mr(std::vector<std::wstring> args);
+    Inst Or(std::vector<std::wstring> args);
 
 private:
     std::map<std::wstring, uint32_t> labels;
