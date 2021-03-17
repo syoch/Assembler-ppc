@@ -192,6 +192,10 @@ std::vector<Inst> Assembler::PPC(std::wstring source)
         {
             mCode.emplace_back(bl(arguments));
         }
+        else if (mnemonic == L"bne")
+        {
+            mCode.emplace_back(bne(arguments));
+        }
         else
         {
             std::wcout << "Not Defined:" << mnemonic << std::endl;
@@ -363,4 +367,8 @@ Inst Assembler::Or(std::vector<std::wstring> args)
 Inst Assembler::bl(std::vector<std::wstring> args)
 {
     return 0x48000001 | (uint16_t)(labels[args[0]] - ip);
+}
+Inst Assembler::bne(std::vector<std::wstring> args)
+{
+    return 0x40820000 | (uint16_t)(labels[args[0]] - ip);
 }

@@ -38,6 +38,7 @@ public:
     Inst mr(std::vector<std::wstring> args);
     Inst Or(std::vector<std::wstring> args);
     Inst bl(std::vector<std::wstring> args);
+    Inst bne(std::vector<std::wstring> args);
 
 private:
     std::map<std::wstring, uint32_t> labels;
