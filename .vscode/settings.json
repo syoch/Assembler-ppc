@@ -2,25 +2,11 @@
     "saveAndRun": {
         "commands": [
             {
-                "cmd": "python3 autotool/auto/autoc.py \"cmake --build . ; cmake --build test; test/Test\"",
+                "cmd": "ninja",
                 "isAsync": true,
                 "silent": true
             }
         ]
-    },
-    "files.exclude": {
-        "**/.git": true,
-        "**/.svn": true,
-        "**/.hg": true,
-        "**/CVS": true,
-        "**/.DS_Store": true,
-        "build/": true,
-        "autotool/": true,
-        ".gitignore": true,
-        ".gitmodules": true,
-        "LICENSE": true,
-        "Makefile": true,
-        "README.md": true
     },
     "files.associations": {
         "*.mc": "json",

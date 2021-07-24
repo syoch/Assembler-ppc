@@ -1,10 +1,6 @@
-# CMake
-Makefile
-cmake_install.cmake
-CMakeCache.txt
-build/
-CMakeFiles/
-
+# meson
+builddir/
+!builddir/.gitkeep
 # Prerequisites
 *.d
 

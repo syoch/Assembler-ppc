@@ -1,6 +1,0 @@
-[submodule "autotool"]
-	path = autotool
-	url = https://github.com/syoch/autotool
-[submodule "libs/strutil"]
-	path = libs/strutil
-	url = https://github.com/syoch/stringUtility
