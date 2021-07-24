@@ -5,7 +5,7 @@ project('tiny-assembler', 'cpp',
 install_headers('tinyasm.h')
 
 import('pkgconfig').generate(
-  libraries : shared_library(
+  libraries : static_library(
     'tinyassembler',
     ['tinyasm.cpp'],
     include_directories : include_directories('.'),
