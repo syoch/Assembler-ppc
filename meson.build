@@ -2,12 +2,12 @@ project('tiny-assembler', 'cpp',
   version : '1.0.0',
   license : 'MIT')
 
-install_headers('asm.h')
+install_headers('tinyasm.h')
 
 import('pkgconfig').generate(
   libraries : shared_library(
     'tinyassembler',
-    ['asm.cpp'],
+    ['tinyasm.cpp'],
     include_directories : include_directories('.'),
     dependencies : [
       dependency('glib-2.0'),
