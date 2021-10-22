@@ -1,6 +1,6 @@
 #include "tinyasm.h"
 
-#include <util.h>
+#include <tinyutil.h>
 
 void split_lines(std::wstring source, std::vector<std::wstring> &dest) {
   std::wstring buffer;
