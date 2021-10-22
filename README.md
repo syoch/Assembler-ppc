@@ -3,10 +3,13 @@ Assembler of PowerPC CPU
 
 # Requirements
 - [stringUtility](https://github.com/syoch/stringUtility)
+- Meson build system
 
 # Install
 ```sh
-
+mkdir builddir; cd builddir
+meson .. .
+sudo ninja install
 ```
 
 # Trouble shooting
