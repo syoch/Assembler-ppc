@@ -1,4 +1,4 @@
-#include "asm.h"
+#include "tinyasm.h"
 
 #include <util.h>
 
